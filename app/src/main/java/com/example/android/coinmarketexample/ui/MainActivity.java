@@ -1,6 +1,7 @@
 package com.example.android.coinmarketexample.ui;
 
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         mTickerAdapter = new TickerAdapter(new ArrayList<>());
         mRecyclerView.setAdapter(mTickerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mMainPresenter.loadData();
     }
 

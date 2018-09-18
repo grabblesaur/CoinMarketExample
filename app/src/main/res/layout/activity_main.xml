@@ -21,6 +21,59 @@
             android:layout_gravity="center" />
     </android.support.v7.widget.Toolbar>
 
+    <android.support.constraint.ConstraintLayout
+        android:padding="16dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/am_numeration"
+            android:text="#"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/am_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/am_name"
+            android:text="Название"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toRightOf="@id/am_numeration"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/am_price"
+            android:textColor="@android:color/white"
+            android:text="USD"
+            android:gravity="end"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toLeftOf="@id/am_percent_change"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/am_percent_change"
+            android:text="24ч"
+            android:textColor="@android:color/white"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

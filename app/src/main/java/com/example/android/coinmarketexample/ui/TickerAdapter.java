@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.example.android.coinmarketexample.R;
 import com.example.android.coinmarketexample.data.model.Ticker;
+import com.example.android.coinmarketexample.data.model.USD;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,7 +35,7 @@ class TickerAdapter extends RecyclerView.Adapter<TickerAdapter.TickerViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull TickerViewHolder tickerViewHolder, int i) {
-        tickerViewHolder.onBind(mTickerList.get(i));
+        tickerViewHolder.onBind(mTickerList.get(i), i);
     }
 
     @Override
@@ -51,20 +53,31 @@ class TickerAdapter extends RecyclerView.Adapter<TickerAdapter.TickerViewHolder>
 
     class TickerViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.it_numeration)
+        TextView mNumber;
         @BindView(R.id.it_name)
         TextView mName;
         @BindView(R.id.it_symbol)
         TextView mSymbol;
+        @BindView(R.id.it_price)
+        TextView mPrice;
+        @BindView(R.id.it_percent_change)
+        TextView mPercentChange;
 
         TickerViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void onBind(Ticker ticker) {
+        void onBind(Ticker ticker, int i) {
+            mNumber.setText(String.valueOf(i + 1));
             mName.setText(ticker.getName());
             mSymbol.setText(ticker.getSymbol());
+            USD usd = ticker.getQuotes().get("USD");
+            if (usd != null) {
+                mPrice.setText(new DecimalFormat("##.###").format(usd.getPrice()));
+                mPercentChange.setText(new DecimalFormat("##.##").format(usd.getPercentChange24Hours()));
+            }
         }
-
     }
 }
