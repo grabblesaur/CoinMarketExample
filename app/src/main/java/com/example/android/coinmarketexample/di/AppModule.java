@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.android.coinmarketexample.Application;
 import com.example.android.coinmarketexample.data.source.remote.ApiService;
+import com.example.android.coinmarketexample.data.source.remote.TickerRemoteDataSource;
 
 import javax.inject.Singleton;
 
@@ -42,6 +43,12 @@ public class AppModule {
     @Provides
     public ApiService provideApiService(Retrofit retrofit) {
         return retrofit.create(ApiService.class);
+    }
+
+    @Singleton
+    @Provides
+    public TickerRemoteDataSource provideTickerRemoteDataSource(ApiService apiService) {
+        return new TickerRemoteDataSource(apiService);
     }
 
 }

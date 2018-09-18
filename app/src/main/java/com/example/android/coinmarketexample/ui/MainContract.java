@@ -6,14 +6,17 @@ import com.example.android.coinmarketexample.data.model.Ticker;
 
 import java.util.List;
 
-public class MainContract {
+public interface MainContract {
 
     interface View extends BaseView {
         void showData(List<Ticker> tickerList);
+        void setLoadingIndicator(boolean b);
     }
 
     abstract class Presenter extends BasePresenter {
         abstract void loadData();
+        abstract void attachView(MainContract.View view);
+        abstract void detachView();
     }
 
 }

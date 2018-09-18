@@ -42,7 +42,10 @@ class TickerAdapter extends RecyclerView.Adapter<TickerAdapter.TickerViewHolder>
     }
 
     public void addTickers(List<Ticker> tickerList) {
-        mTickerList = tickerList;
+        if (!mTickerList.isEmpty()) {
+            mTickerList.clear();
+        }
+        mTickerList.addAll(tickerList);
         notifyDataSetChanged();
     }
 
