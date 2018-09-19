@@ -37,9 +37,9 @@ public class MainPresenter extends MainContract.Presenter {
     }
 
     @Override
-    void loadData() {
-        mMainView.setLoadingIndicator(true);
-        mRepository.loadData(new TickerRemoteDataSource.LoadTickersCallback() {
+    void loadData(int start) {
+//        mMainView.setLoadingIndicator(true);
+        mRepository.loadData(start, new TickerRemoteDataSource.LoadTickersCallback() {
 
             @Override
             public void onMetadataLoaded(Metadata metadata) {
@@ -48,13 +48,13 @@ public class MainPresenter extends MainContract.Presenter {
 
             @Override
             public void onTickersLoaded(List<Ticker> tickers) {
-                mMainView.setLoadingIndicator(false);
+//                mMainView.setLoadingIndicator(false);
                 mMainView.showData(tickers);
             }
 
             @Override
             public void onError(Throwable throwable) {
-                mMainView.setLoadingIndicator(false);
+//                mMainView.setLoadingIndicator(false);
                 mMainView.showError(throwable.getMessage());
             }
         });

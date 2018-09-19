@@ -39,9 +39,13 @@ public class TickerRemoteDataSource {
         mApiService = apiService;
     }
 
-    public void loadData(LoadTickersCallback callback) {
-        mApiService.getData("array",
-                "10", "id")
+    public void loadData(int start, LoadTickersCallback callback) {
+        Log.i(TAG, "loadData: start = " + start);
+        mApiService.getData(
+                "array",
+                String.valueOf(start),
+                "500",
+                "id")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(this::onError)

@@ -19,8 +19,8 @@ public class MainRepository {
         mRemoteDataSource = remoteDataSource;
     }
 
-    public void loadData(TickerRemoteDataSource.LoadTickersCallback callback) {
-        mRemoteDataSource.loadData(new TickerRemoteDataSource.LoadTickersCallback() {
+    public void loadData(int start, TickerRemoteDataSource.LoadTickersCallback callback) {
+        mRemoteDataSource.loadData(start, new TickerRemoteDataSource.LoadTickersCallback() {
 
             @Override
             public void onMetadataLoaded(Metadata metadata) {

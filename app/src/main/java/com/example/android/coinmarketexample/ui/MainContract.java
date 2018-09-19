@@ -14,7 +14,7 @@ public interface MainContract {
     }
 
     abstract class Presenter extends BasePresenter {
-        abstract void loadData();
+        abstract void loadData(int start);
         abstract void attachView(MainContract.View view);
         abstract void detachView();
     }
